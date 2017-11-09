@@ -10,62 +10,16 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var appCategory: AppCategory? {
+        didSet {
+            
+            if let name = appCategory?.name {
+                sectionLabel.text = name
+            }
+        }
+    }
+    
     private let cellId = "appCellId"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    let appsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return collectionView
-    }()
-    
-    func setupViews() {
-        backgroundColor = UIColor.clear
-        
-        addSubview(appsCollectionView)
-        
-        appsCollectionView.dataSource = self
-        appsCollectionView.delegate = self
-        appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: cellId)
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView]))
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt sizeForItemAtIndexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 100.0, height: frame.height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
-    }
-}
-
-class AppCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,14 +33,108 @@ class AppCell: UICollectionViewCell {
     let sectionLabel: UILabel = {
         let label = UILabel()
         label.text = "New Apps We Love"
-        label.font = UIFont.systemFont(ofSize: 24)
-        label.textColor = UIColor.darkGray
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
+    let appsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return collectionView
+    }()
+    
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    func setupViews() {
+        backgroundColor = UIColor.clear
+        
+        addSubview(sectionLabel)
+        addSubview(appsCollectionView)
+        addSubview(dividerLineView)
+        
+        appsCollectionView.dataSource = self
+        appsCollectionView.delegate = self
+        appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: cellId)
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": sectionLabel]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": dividerLineView]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView]))
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[sectionLabel(30)][v0][v1(0.5)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView, "v1": dividerLineView, "sectionLabel": sectionLabel]))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let count = appCategory?.apps?.count {
+            return count
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCell
+        cell.app = appCategory?.apps?[indexPath.item]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt sizeForItemAtIndexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: 88.0, height: frame.height - 35)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
+    }
+}
+
+class AppCell: UICollectionViewCell {
+    
+    var app: App? {
+        didSet {
+            
+            if let name = app?.name {
+                nameLabel.text = name
+            }
+            
+            if let imageName = app?.imageName {
+                imageView.image = UIImage(named: imageName)
+            }
+            
+            if let category = app?.category {
+                categoryLabel.text = category
+            }
+            
+            if let price = app?.price {
+                priceLabel.text = "$\(price)"
+            } else {
+                priceLabel.text = ""
+            }
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let imageView: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "pokematch")
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 16
         image.layer.masksToBounds = true
@@ -95,40 +143,22 @@ class AppCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "PokéMatch: A Memory Game"
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.numberOfLines = 2
         return label
     }()
     
     let categoryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Entertainment"
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = UIColor.lightGray
+        label.font = UIFont.systemFont(ofSize: 11)
+        label.textColor = UIColor.darkGray
+        label.numberOfLines = 1
         return label
-    }()
-    
-    let priceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-        view.layer.cornerRadius = 10
-        view.layer.masksToBounds = true
-        return view
     }()
     
     let priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "GET"
-        label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.textColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1)
-        return label
-    }()
-    
-    let inAppPurchaseLabel: UILabel = {
-        let label = UILabel()
-        label.text = "In-App Purchases"
-        label.font = UIFont.systemFont(ofSize: 6.3)
+        label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.darkGray
         return label
     }()
@@ -137,16 +167,12 @@ class AppCell: UICollectionViewCell {
         addSubview(imageView)
         addSubview(nameLabel)
         addSubview(categoryLabel)
-        addSubview(priceView)
         addSubview(priceLabel)
-        addSubview(inAppPurchaseLabel)
         
         imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
-        nameLabel.frame = CGRect(x: 0, y: frame.width + 2, width: frame.width, height: 40)
-        categoryLabel.frame = CGRect(x: 0, y: frame.width + 38, width: frame.width, height: 20)
-        priceView.frame = CGRect(x: 0, y: frame.width + 58, width: frame.width / 1.7, height: 24)
-        priceLabel.frame = CGRect(x: 16, y: frame.width + 60, width: frame.width, height: 20)
-        inAppPurchaseLabel.frame = CGRect(x: 2, y: frame.width + 78, width: frame.width / 1.75, height: 20)
+        nameLabel.frame = CGRect(x: 0, y: frame.width, width: frame.width, height: 40)
+        categoryLabel.frame = CGRect(x: 0, y: frame.width + 33, width: frame.width, height: 20)
+        priceLabel.frame = CGRect(x: 0, y: frame.width + 50, width: frame.width, height: 20)
     }
 }
 

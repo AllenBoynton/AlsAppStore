@@ -17,6 +17,8 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        appCategories = AppCategory.sampleAppCategories()
+        
         AppCategory.fetchFeaturedApps { (appCategories) -> () in
             self.appCategories = appCategories
             self.collectionView?.reloadData()

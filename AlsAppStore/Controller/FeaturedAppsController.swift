@@ -8,11 +8,12 @@
 
 import UIKit
 
+private let cellId = "cellId"
+private let largeCellId = "largeCellId"
+private let headerId = "headerId"
+private let descriptionCellId = "descriptionCellId"
+
 class FeaturedAppsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
-    private let cellId = "cellId"
-    private let largeCellId = "largeCellId"
-    private let headerId = "headerId"
     
     var featuredApps: FeaturedApps?
     var appCategories: [AppCategory]?
@@ -39,16 +40,22 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         collectionView?.register(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
+    func showAppDetailForApp(_ app: App) {
+        let layout = UICollectionViewFlowLayout()
+        let appDetailController = AppDetailController(collectionViewLayout: layout)
+        appDetailController.app = app
+        navigationController?.pushViewController(appDetailController, animated: true)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
-            cell.appCategory = appCategories?[indexPath.item]
-            
-            return cell
-        }
+        let cell: CategoryCell
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+        if indexPath.item == 2 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+        }
         
         cell.appCategory = appCategories?[indexPath.item]
         cell.customAppCategory = customAppCategories?[indexPath.item]

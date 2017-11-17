@@ -15,10 +15,11 @@
 		091F42721FB1260900283314 /* AlsAppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F42711FB1260900283314 /* AlsAppStoreUITests.swift */; };
 		091F42861FB22CC900283314 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 091F42851FB22CC800283314 /* Default-568h@2x.png */; };
 		099865CB1FBE829F00CC089D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099865CA1FBE829F00CC089D /* UIView.swift */; };
+		099865CD1FBF8D5900CC089D /* AppDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099865CC1FBF8D5900CC089D /* AppDetailHeader.swift */; };
+		099865CF1FBF8D9A00CC089D /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099865CE1FBF8D9A00CC089D /* BaseCell.swift */; };
 		09A522151FB34F7F008F1CCE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522141FB34F7F008F1CCE /* CategoryCell.swift */; };
 		09A522171FB3CA1F008F1CCE /* AppCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522161FB3CA1F008F1CCE /* AppCategory.swift */; };
 		09A522191FB52FDE008F1CCE /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522181FB52FDE008F1CCE /* AppCell.swift */; };
-		09A5221B1FB53BBA008F1CCE /* CustomAppCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A5221A1FB53BBA008F1CCE /* CustomAppCategory.swift */; };
 		09A5221D1FB55295008F1CCE /* LargeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A5221C1FB55295008F1CCE /* LargeCategoryCell.swift */; };
 		09A5221F1FB559C4008F1CCE /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A5221E1FB559C4008F1CCE /* Header.swift */; };
 		09A522211FB56DFA008F1CCE /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522201FB56DFA008F1CCE /* AppDetailController.swift */; };
@@ -61,10 +62,11 @@
 		091F42731FB1260900283314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091F42851FB22CC800283314 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		099865CA1FBE829F00CC089D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		099865CC1FBF8D5900CC089D /* AppDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeader.swift; sourceTree = "<group>"; };
+		099865CE1FBF8D9A00CC089D /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		09A522141FB34F7F008F1CCE /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		09A522161FB3CA1F008F1CCE /* AppCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCategory.swift; sourceTree = "<group>"; };
 		09A522181FB52FDE008F1CCE /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
-		09A5221A1FB53BBA008F1CCE /* CustomAppCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppCategory.swift; sourceTree = "<group>"; };
 		09A5221C1FB55295008F1CCE /* LargeCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeCategoryCell.swift; sourceTree = "<group>"; };
 		09A5221E1FB559C4008F1CCE /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		09A522201FB56DFA008F1CCE /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
@@ -180,10 +182,12 @@
 			isa = PBXGroup;
 			children = (
 				091F425A1FB1260900283314 /* LaunchScreen.storyboard */,
+				099865CE1FBF8D9A00CC089D /* BaseCell.swift */,
 				09A522141FB34F7F008F1CCE /* CategoryCell.swift */,
 				09A522181FB52FDE008F1CCE /* AppCell.swift */,
 				09A5221C1FB55295008F1CCE /* LargeCategoryCell.swift */,
 				09A5221E1FB559C4008F1CCE /* Header.swift */,
+				099865CC1FBF8D5900CC089D /* AppDetailHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,7 +213,6 @@
 			isa = PBXGroup;
 			children = (
 				09A522161FB3CA1F008F1CCE /* AppCategory.swift */,
-				09A5221A1FB53BBA008F1CCE /* CustomAppCategory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -541,13 +544,14 @@
 				099865CB1FBE829F00CC089D /* UIView.swift in Sources */,
 				09A522211FB56DFA008F1CCE /* AppDetailController.swift in Sources */,
 				09A5221F1FB559C4008F1CCE /* Header.swift in Sources */,
-				09A5221B1FB53BBA008F1CCE /* CustomAppCategory.swift in Sources */,
 				09A5221D1FB55295008F1CCE /* LargeCategoryCell.swift in Sources */,
 				09A522191FB52FDE008F1CCE /* AppCell.swift in Sources */,
 				091F42541FB1260900283314 /* FeaturedAppsController.swift in Sources */,
 				091F42521FB1260900283314 /* AppDelegate.swift in Sources */,
+				099865CF1FBF8D9A00CC089D /* BaseCell.swift in Sources */,
 				09A522151FB34F7F008F1CCE /* CategoryCell.swift in Sources */,
 				09A522171FB3CA1F008F1CCE /* AppCategory.swift in Sources */,
+				099865CD1FBF8D5900CC089D /* AppDetailHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

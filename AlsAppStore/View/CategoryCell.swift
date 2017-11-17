@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class CategoryCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var featuredAppsController: FeaturedAppsController?
     
@@ -22,24 +22,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         }
     }
     
-    var customAppCategory: CustomAppCategory? {
-        didSet {
-            if let name = customAppCategory?.name {
-                sectionLabel.text = name
-            }
-        }
-    }
-    
     private let cellId = "appCellId"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     let sectionLabel: UILabel = {
         let label = UILabel()
@@ -66,7 +49,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         return view
     }()
     
-    func setupViews() {
+    override func setupViews() {
         backgroundColor = UIColor.clear
         
         addSubview(sectionLabel)
@@ -78,11 +61,9 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         
         appsCollectionView.register(AppCell.self, forCellWithReuseIdentifier: cellId)
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": sectionLabel]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": dividerLineView]))
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView]))
+        addConstraintsWithFormat(format: "H:|-14-[v0]|", views: sectionLabel)
+        addConstraintsWithFormat(format: "H:|-14-[v0]|", views: dividerLineView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: appsCollectionView)
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[sectionLabel(30)][v0][v1(0.5)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView, "v1": dividerLineView, "sectionLabel": sectionLabel]))
     }
@@ -98,17 +79,12 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
             return count
         }
         
-        if let count = customAppCategory?.hardCodedApps?.count {
-            return count
-        }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCell
-        cell.app = appCategory?.apps?[indexPath.item]
-        cell.hardCodedApp = customAppCategory?.hardCodedApps?[indexPath.item]
-        
+        cell.app = appCategory?.apps?[indexPath.item]        
         return cell
     }
     

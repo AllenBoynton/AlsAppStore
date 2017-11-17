@@ -32,7 +32,6 @@ class Header: CategoryCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCell
         cell.app = appCategory?.apps?[indexPath.item]
-        
         return cell
     }
     

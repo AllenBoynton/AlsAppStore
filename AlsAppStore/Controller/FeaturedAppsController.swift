@@ -17,14 +17,11 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
     
     var featuredApps: FeaturedApps?
     var appCategories: [AppCategory]?
-    var customAppCategories: [CustomAppCategory]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Featured Apps"
-        
-//        customAppCategories = CustomAppCategory.sampleAppCategories()
         
         AppCategory.fetchFeaturedApps { (featuredApps) -> () in
             self.featuredApps = featuredApps
@@ -53,15 +50,12 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         
         if indexPath.item == 2 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
-            cell.featuredAppsController = self
-            
             return cell
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell            
         }
         
         cell.appCategory = appCategories?[indexPath.item]
-        cell.customAppCategory = customAppCategories?[indexPath.item]
         cell.featuredAppsController = self
         
         return cell
@@ -71,10 +65,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         if let count = appCategories?.count {
             return count
         }
-        
-        if let count = customAppCategories?.count {
-            return count
-        }
+ 
         return 0
     }
 
@@ -84,9 +75,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
             return CGSize(width: view.frame.width, height: 160)
         }
         
-        let width: CGFloat = view.frame.width
-        let height: CGFloat = 200.0
-        return CGSize(width: width, height: height)
+        return CGSize(width: view.frame.width, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

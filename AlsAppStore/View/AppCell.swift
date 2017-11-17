@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCell: UICollectionViewCell {
+class AppCell: BaseCell {
     
     var app: App? {
         didSet {
@@ -45,38 +45,6 @@ class AppCell: UICollectionViewCell {
         }
     }
     
-    var hardCodedApp: HardCodedApp? {
-        didSet {
-            
-//            if let name = hardCodedApp?.name {
-//                nameLabel.text = name
-//            }
-//
-//            if let imageName = hardCodedApp?.imageName {
-//                imageView.image = UIImage(named: imageName)
-//            }
-//
-//            if let category = hardCodedApp?.category {
-//                categoryLabel.text = category
-//            }
-//
-//            if let price = hardCodedApp?.price {
-//                priceLabel.text = "$\(price)"
-//            } else {
-//                priceLabel.text = ""
-//            }
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     let imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -107,7 +75,7 @@ class AppCell: UICollectionViewCell {
         return label
     }()
     
-    func setupViews() {
+    override func setupViews() {
         addSubview(imageView)
         addSubview(nameLabel)
         addSubview(categoryLabel)

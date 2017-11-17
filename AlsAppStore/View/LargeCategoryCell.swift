@@ -20,7 +20,6 @@ class LargeCategoryCell: CategoryCell {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeAppCellId, for: indexPath) as! AppCell
         cell.app = appCategory?.apps?[indexPath.item]
-        
         return cell
     }
     
@@ -28,12 +27,13 @@ class LargeCategoryCell: CategoryCell {
         return CGSize(width: 220.0, height: frame.height - 40)
     }
     
-    private class LargeAppCell: AppCell {
+    fileprivate class LargeAppCell: AppCell {
         override func setupViews() {
             imageView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(imageView)
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-2-[v0]-14-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+            
+            addConstraintsWithFormat(format: "H:|[v0]|", views: imageView)
+            addConstraintsWithFormat(format: "V:|-2-[v0]-14-|", views: imageView)
         }
     }
 }

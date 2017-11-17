@@ -14,6 +14,7 @@
 		091F42671FB1260900283314 /* AlsAppStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F42661FB1260900283314 /* AlsAppStoreTests.swift */; };
 		091F42721FB1260900283314 /* AlsAppStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F42711FB1260900283314 /* AlsAppStoreUITests.swift */; };
 		091F42861FB22CC900283314 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 091F42851FB22CC800283314 /* Default-568h@2x.png */; };
+		099865CB1FBE829F00CC089D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099865CA1FBE829F00CC089D /* UIView.swift */; };
 		09A522151FB34F7F008F1CCE /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522141FB34F7F008F1CCE /* CategoryCell.swift */; };
 		09A522171FB3CA1F008F1CCE /* AppCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522161FB3CA1F008F1CCE /* AppCategory.swift */; };
 		09A522191FB52FDE008F1CCE /* AppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A522181FB52FDE008F1CCE /* AppCell.swift */; };
@@ -59,6 +60,7 @@
 		091F42711FB1260900283314 /* AlsAppStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlsAppStoreUITests.swift; sourceTree = "<group>"; };
 		091F42731FB1260900283314 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		091F42851FB22CC800283314 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		099865CA1FBE829F00CC089D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		09A522141FB34F7F008F1CCE /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		09A522161FB3CA1F008F1CCE /* AppCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCategory.swift; sourceTree = "<group>"; };
 		09A522181FB52FDE008F1CCE /* AppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCell.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		091F42501FB1260900283314 /* AlsAppStore */ = {
 			isa = PBXGroup;
 			children = (
+				099865C91FBE828400CC089D /* Extensions */,
 				091F427F1FB22A7B00283314 /* AppDelegate */,
 				091F42841FB22AAF00283314 /* Model */,
 				091F42811FB22A9300283314 /* View */,
@@ -209,6 +212,14 @@
 				09A5221A1FB53BBA008F1CCE /* CustomAppCategory.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		099865C91FBE828400CC089D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				099865CA1FBE829F00CC089D /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		225380BCBE96CC13B9C2D2A8 /* Pods */ = {
@@ -527,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099865CB1FBE829F00CC089D /* UIView.swift in Sources */,
 				09A522211FB56DFA008F1CCE /* AppDetailController.swift in Sources */,
 				09A5221F1FB559C4008F1CCE /* Header.swift in Sources */,
 				09A5221B1FB53BBA008F1CCE /* CustomAppCategory.swift in Sources */,

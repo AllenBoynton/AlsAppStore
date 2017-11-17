@@ -10,6 +10,8 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    var featuredAppsController: FeaturedAppsController?
+    
     var appCategory: AppCategory? {
         didSet {
             if let name = appCategory?.name {
@@ -85,6 +87,12 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[sectionLabel(30)][v0][v1(0.5)]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": appsCollectionView, "v1": dividerLineView, "sectionLabel": sectionLabel]))
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = appCategory?.apps?[indexPath.item] {
+            featuredAppsController?.showAppDetail(app)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = appCategory?.apps?.count {
             return count
@@ -100,6 +108,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppCell
         cell.app = appCategory?.apps?[indexPath.item]
         cell.hardCodedApp = customAppCategory?.hardCodedApps?[indexPath.item]
+        
         return cell
     }
     

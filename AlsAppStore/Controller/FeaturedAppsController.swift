@@ -40,7 +40,7 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         collectionView?.register(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
-    func showAppDetailForApp(_ app: App) {
+    func showAppDetail(_ app: App) {
         let layout = UICollectionViewFlowLayout()
         let appDetailController = AppDetailController(collectionViewLayout: layout)
         appDetailController.app = app
@@ -53,12 +53,16 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         
         if indexPath.item == 2 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
+            cell.featuredAppsController = self
+            
+            return cell
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell            
         }
         
         cell.appCategory = appCategories?[indexPath.item]
         cell.customAppCategory = customAppCategories?[indexPath.item]
+        cell.featuredAppsController = self
         
         return cell
     }

@@ -32,6 +32,8 @@ class AppDetailHeader: BaseCell {
         didSet {
             if let companyName = appInformation?.Name {
                 companyLabel.text = companyName
+            } else {
+                companyLabel.text = "Apple"
             }
         }
     }
@@ -82,7 +84,7 @@ class AppDetailHeader: BaseCell {
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
         label.text = "ABtech Applications >"
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         return label
     }()
     
@@ -167,7 +169,7 @@ class AppDetailHeader: BaseCell {
         addConstraintsWithFormat(format: "V:|-14-[v0(20)][v1(20)]", views: nameLabel, companyLabel)
         addConstraintsWithFormat(format: "H:|-125-[v0]", views: companyLabel)
         
-        addConstraintsWithFormat(format: "V:|-17-[v0]", views: ageRatingLabel)
+        addConstraintsWithFormat(format: "V:|-18-[v0]", views: ageRatingLabel)
         
         addConstraintsWithFormat(format: "H:|-125-[v0(10)][v1(10)][v2(10)][v3(10)][v4(10)]-4-[v5]", views: starImage1, starImage2, starImage3, starImage4, starImage5, reviewNumberLabel)
         
@@ -178,7 +180,7 @@ class AppDetailHeader: BaseCell {
         addConstraintsWithFormat(format: "V:[v0]-56-|", views: reviewNumberLabel)
         
         addConstraintsWithFormat(format: "H:|-40-[v0]-40-|", views: segmentedControl)
-        addConstraintsWithFormat(format: "V:[v0(34)]-8-|", views: segmentedControl)
+        addConstraintsWithFormat(format: "V:[v0(34)]-10-|", views: segmentedControl)
         
         addConstraintsWithFormat(format: "H:[v0]-14-|", views: buyButton)
         addConstraintsWithFormat(format: "V:[v0]-56-|", views: buyButton)

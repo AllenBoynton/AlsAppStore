@@ -28,6 +28,14 @@ class AppDetailHeader: BaseCell {
         }
     }
     
+    var appInformation: AppInformation? {
+        didSet {
+            if let companyName = appInformation?.Name {
+                companyLabel.text = companyName
+            }
+        }
+    }
+    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -114,7 +122,7 @@ class AppDetailHeader: BaseCell {
         let label = UILabel()
         label.text = "(1,273)"
         label.textColor = .darkGray
-        label.font = UIFont.systemFont(ofSize: 9.5)
+        label.font = UIFont.systemFont(ofSize: 9)
         return label
     }()
     
@@ -175,7 +183,7 @@ class AppDetailHeader: BaseCell {
         addConstraintsWithFormat(format: "H:[v0]-14-|", views: buyButton)
         addConstraintsWithFormat(format: "V:[v0]-56-|", views: buyButton)
         
-        addConstraintsWithFormat(format: "H:|[v0]|", views: dividerLineView)
+        addConstraintsWithFormat(format: "H:|-14-[v0]|", views: dividerLineView)
         addConstraintsWithFormat(format: "V:[v0(1)]|", views: dividerLineView)
     }
 }

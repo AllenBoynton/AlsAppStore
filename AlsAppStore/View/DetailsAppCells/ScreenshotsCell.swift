@@ -26,6 +26,12 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         return cv
     }()
     
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.4, alpha: 0.4)
+        return view
+    }()
+    
     override func setupViews() {
         super.setupViews()
         
@@ -33,9 +39,13 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         collectionView.delegate = self
         
         addSubview(collectionView)
+        addSubview(dividerLineView)
         
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
-        addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
+        
+        addConstraintsWithFormat(format: "H:|-14-[v0]|", views: dividerLineView)
+        
+        addConstraintsWithFormat(format: "V:|[v0][v1(1)]|", views: collectionView, dividerLineView)
         
         collectionView.register(ScreenshotsImageCell.self, forCellWithReuseIdentifier: cellId)
     }
@@ -44,7 +54,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         if let count = app?.Screenshots?.count {
             return count
         }
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -52,6 +62,8 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         
         if let imageName = app?.Screenshots?[indexPath.item] {
             cell.imageView.image = UIImage(named: imageName)
+        } else {
+            cell.imageView.image = UIImage(named: "download")
         }
         return cell
     }
@@ -69,8 +81,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
         let imageView: UIImageView = {
             let iv = UIImageView()
             iv.contentMode = .scaleAspectFill
-            iv.image = UIImage(named: "frozen_screenshot1")
-            iv.layer.shadowColor = UIColor.darkGray.cgColor
+            iv.layer.shadowColor = UIColor.black.cgColor
             iv.layer.shadowOffset = CGSize(width: 2, height: 2)
             iv.layer.shadowOpacity = 1
             return iv
@@ -83,7 +94,7 @@ class ScreenshotsCell: BaseCell, UICollectionViewDataSource, UICollectionViewDel
             
             addSubview(imageView)
             
-            addConstraintsWithFormat(format: "H:|[v0]|", views: imageView)
+            addConstraintsWithFormat(format: "H:|[v0]-8-|", views: imageView)
             addConstraintsWithFormat(format: "V:|[v0]|", views: imageView)
         }
     }

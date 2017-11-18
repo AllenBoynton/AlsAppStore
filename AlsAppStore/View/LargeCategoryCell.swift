@@ -23,14 +23,22 @@ class LargeCategoryCell: CategoryCell {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = appCategory?.apps?[indexPath.item] {
+            featuredAppsController?.showAppDetail(app)
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt sizeForItemAtIndexPath: IndexPath) -> CGSize {
         return CGSize(width: 220.0, height: frame.height - 40)
     }
     
     fileprivate class LargeAppCell: AppCell {
         override func setupViews() {
-            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
             addSubview(imageView)
+            
+            imageView.translatesAutoresizingMaskIntoConstraints = false
             
             addConstraintsWithFormat(format: "H:|[v0]|", views: imageView)
             addConstraintsWithFormat(format: "V:|-2-[v0]-14-|", views: imageView)

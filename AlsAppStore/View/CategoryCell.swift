@@ -89,7 +89,6 @@ class CategoryCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt sizeForItemAtIndexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: 88.0, height: frame.height - 35)
     }
     

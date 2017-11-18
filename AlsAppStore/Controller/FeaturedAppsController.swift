@@ -33,7 +33,6 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         
         collectionView?.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
         collectionView?.register(LargeCategoryCell.self, forCellWithReuseIdentifier: largeCellId)
-        
         collectionView?.register(Header.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
     }
     
@@ -50,6 +49,8 @@ class FeaturedAppsController: UICollectionViewController, UICollectionViewDelega
         
         if indexPath.item == 2 {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: largeCellId, for: indexPath) as! LargeCategoryCell
+            cell.appCategory = appCategories?[indexPath.item]
+            
             return cell
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell            

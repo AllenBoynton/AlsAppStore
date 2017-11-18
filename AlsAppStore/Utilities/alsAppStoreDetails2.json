@@ -1,0 +1,45 @@
+{
+	Id: 2,
+	Name: “”,
+	Category: “”,
+	Price: ,
+	ImageName: “”,
+	Screenshots: [
+		“”,
+		“”,
+		“”,
+		“”,
+		“”
+	],
+	description: “”,
+	appInformation: [
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		},
+		{
+			Name: “”,
+			Value: “”
+		}
+	]
+}

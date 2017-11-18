@@ -1,0 +1,45 @@
+{
+	Id: 1,
+	Name: “Disney Build It: Frozen”,
+	Category: “Entertainment”,
+	Price: 3.99,
+	ImageName: “frozen”,
+	Screenshots: [
+		“frozen_screenshot1”,
+		“frozen_screenshot2”,
+		“frozen_screenshot3”,
+		“frozen_screenshot4”,
+		“frozen_screenshot5”
+	],
+	description: “Join your friends from FROZEN to build your very own version of Arendelle and let your imagination run wild!/*\n\n\u{2022} Customize FROZEN buildings and add tons of props to design your worlds any way you like.\n\u{2022} Play with your favorite FROZEN characters and complete mini-missions to create the buildings of their dreams!\n\u{2022} Unlock magical snowflakes and Snowgie surprises along the way!\n\u{2022} Start with Elsa, Sven, two buildable locations, plus lots of buildings and accessories to create your own Frozen world. Then, add more characters, lands, buildings, and accessories as you expand your collection!\n\nFEATURES\n\n\u{2022} Build in 5 locations: the North Mountain, the Forest, Troll Valley, Arendelle Castle, and the town of Arendelle.\n\u{2022} Elsa, Anna, Olaf, Sven, and Kristoff will play, dance, ride, and even celebrate along with you!\n\u{2022} Customize your own FROZEN buildings with different colors, roofs, chimneys, and more to unlock magical snowflakes.\n\u{2022} Make your snow globe special by adding lakes, mountains, rocks, trees, puddles, and even snowmen!\n\u{2022} Go on mini-missions to build your favorite Frozen characters’ palaces, castles, towers, amphitheaters, and more!\n\u{2022} Unlock Snowgie and Marshmallow surprises!\n\u{2022} Build your very own collection of snow globe creations—and then shake ‘em up to see an Arendelle snowfall!\n\nSPECIAL FEATURES FOR THE iPHONE 6s AND 6s+\n\nIf you’re playing Disney Build It: Frozen on an iPhone 6s or 6s+, you can use the devices 3D Touch feature two exciting ways. Once you’ve built at least one snow globe, use Home Screen Quick Actions to jump into your snow globes at the blink of an eye. Then, inside your snow globe, use 3D touch to take a flying tour, and see your world up close like never before!\n\n**NOTE: This app is not compatible with the iPhone 4 or the iPod Touch 5th Gen 16GB\n\nBefore you download this experience, please consider that this app contains in-app purchases that cost real money, as well as advertising for the Walt Disney Family of Companies.\n\nIf you’re experiencing difficulties with audio, please check the audio settings with your device to see if your device is muted. If that doesnt solve your issues, please visit our customer care FAQ page here: http://help.disney.com/en_US/Apps/Disney-Build-It-Frozen\n\nFor additional information about our practices in the United States and Latin America regarding children’s personal information, please read our Children’s Privacy Policy at https://disneyprivacycenter.com/kids-privacy-policy/english/.*/”,
+	appInformation: [
+		{
+			Name: “Seller”,
+			Value: “Disney Publishing Worldwide Applications”
+		},
+		{
+			Name: “Category”,
+			Value: “Entertainment”
+		},
+		{
+			Name: “Updated”,
+			Value: “Apr 20, 2016”
+		},
+		{
+			Name: “Version”,
+			Value: “1.2”
+		},
+		{
+			Name: “Size”,
+			Value: “143 MB”
+		},
+		{
+			Name: “Rating”,
+			Value: “Ages 4+, Made for ages 6-8”
+		},
+		{
+			Name: “Family Sharing”,
+			Value: “Yes”
+		}
+	]
+}
